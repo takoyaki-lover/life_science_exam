@@ -11,17 +11,18 @@
 
 <h1>生命科学 小テスト 第3回</h1>
 <p class="select-p">小テスト選択：
-<select id="exam-num">
-	<option value="0">ホーム</option>
-	<option value="1">第1回</option>
-	<option value="2">第2回</option>
-	<option value="3" selected>第3回</option>
-</select>
+	<select id="exam-num">
+		<option value="0">ホーム</option>
+		<option value="1">第1回</option>
+		<option value="2">第2回</option>
+		<option value="3" selected>第3回</option>
+	</select>
 </p>
+
 <div id="quiz-container"></div>
 
-<button class="check" onclick="checkAnswers()">採点</button>
-<h2 class="score">点数：<span id="score">まだ採点していません</span></h2>
+<button class="check" onclick="checkAnswers()">採点する</button>
+<h2 class="score">点数：<span id="score">まだ採点されていません</span></h2>
 
 <script>
 
@@ -32,15 +33,15 @@ const quizSections = [
 	{
 		title: "問題１．【遺伝子操作】について、「図１」と「図２」を見ながら、それぞれの空欄([　])に最もよく当てはまる選択肢を一つずつ選びなさい。",
 		images: ["f1.png", "f2.png"],
-		choices: ["DNAを合成する", "DNA2本鎖を分離する", "プライマーを鋳型DNAに結合させる", "DNAポリメラーゼを失活させる", "(ア)と(イ)", "(イ)と(ウ)", "(ウ)と(エ)", "(ア)と(エ)", "Eco RI", "Sal I", "Xho I"],
+		choices: ["DNAを合成する", "DNA2本鎖を分離する", "プライマーを鋳型DNAに結合させる", "DNAポリメラーゼを失活させる", "(ア)と(イ)", "(ア)と(ウ)", "(ア)と(エ)", "(イ)と(ウ)", "(イ)と(エ)", "(ウ)と(エ)", "Eco RI", "Sal I", "Xho I"],
 		questions: [
 			{
 				text: "「図１」は、切断されたDNA２本鎖の塩基配列を示したものであり、このDNAを切断したのは制限酵素の［　］である。",
-				answer: 10
+				answer: 12
 			},
 			{
 				text: "「図２」の(ア)～(エ)のうち、DNA鎖(黒線)を鋳型として「増幅範囲」をPCRで増幅する場合に必要なプライマーの結合位置は［　］である。",
-				answer: 15
+				answer: 7
 			},
 			{
 				text: "PCR反応において、反応を開始させて一番初めに起こるべき反応は［　］ことである。",
@@ -52,11 +53,11 @@ const quizSections = [
 	{
 		title: "問題２． 「図３」はヒトの【減数分裂】の様子を模式的に示したものである。「図３」を見ながら、それぞれの空欄([　])に最もよく当てはまる選択肢を一つずつ選びなさい。",
 		images: ["f3.png"],
-		choices: ["(ア)", "(イ)", "(ウ)", "(エ)", "(オ)", "(ア)と(オ)", "(ウ)と(エ)", "(エ)と(オ)", "減数分裂", "二価染色体形成", "DNA複製", "染色体の乗換"],
+		choices: ["(ア)", "(イ)", "(ウ)", "(エ)", "(オ)", "(ア)と(イ)", "(ア)と(ウ)", "(ア)と(エ)", "(ア)と(オ)", "(イ)と(ウ)", "(イ)と(エ)", "(イ)と(オ)", "(ウ)と(エ)", "(ウ)と(オ)", "(エ)と(オ)", "減数分裂", "二価染色体形成", "DNA複製", "染色体の乗換"],
 		questions: [
 			{
 				text: "「図３」の※の段階では [　] が起きている。",
-				answer: 10
+				answer: 17 // DNA複製
 			},
 			{
 				text: "「図３」の(ア)～(オ)のうち、精子と結合して受精するのは [　] の細胞である。",
@@ -64,7 +65,7 @@ const quizSections = [
 			},
 			{
 				text: "「図３」の(ア)～(オ)のうち、受精後の発生過程で消失するのは [　] である。",
-				answer: 7
+				answer: 14 // (エ)と(オ)
 			}
 		]
 	},
