@@ -2,26 +2,27 @@
 <html lang="ja">
 <head>
 	<meta charset="UTF-8">
-	<title>生命科学 小テスト第1回</title>
+	<title>生命科学 小テスト 第1回</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=0.5">
 	<link rel="stylesheet" href="./styles.css">
 </head>
 
 <body>
 
-<h1>生命科学 小テスト第1回</h1>
+<h1>生命科学 小テスト 第1回</h1>
 <p class="select-p">小テスト選択：
-<select id="exam-num">
-	<option value="0">ホーム</option>
-	<option value="1" selected>第1回</option>
-	<option value="2">第2回</option>
-	<option value="3">第3回</option>
-</select>
+	<select id="exam-num">
+		<option value="0">ホーム</option>
+		<option value="1" selected>第1回</option>
+		<option value="2">第2回</option>
+		<option value="3">第3回</option>
+	</select>
 </p>
+
 <div id="quiz-container"></div>
 
-<button class="check" onclick="checkAnswers()">採点</button>
-<h2 class="score">点数：<span id="score">まだ採点していません</span></h2>
+<button class="check" onclick="checkAnswers()">採点する</button>
+<h2 class="score">点数：<span id="score">まだ採点されていません</span></h2>
 
 <script>
 
@@ -35,11 +36,11 @@ const quizSections = [
 		choices: ["(ア)", "(イ)", "(ウ)", "(エ)", "アクチン", "ミオシン", "アデニン", "グアニン", "タンパク質", "セルロース", "リボース", "デオキシリボース"],
 		questions: [
 			{
-				text: "「図１」の (ア), (イ), (ウ), (エ) のうち、生体膜の主成分となるのは［　］である。",
+				text: "「図１」の(ア)～(エ)のうち、生体膜の主成分となるのは［　］である。",
 				answer: 3
 			},
 			{
-				text: "「図１」の (ア), (イ), (ウ), (エ) のうち、多糖類を示すのは［　］である。",
+				text: "「図１」の(ア)～(エ)のうち、多糖類を示すのは［　］である。",
 				answer: 1
 			},
 			{
@@ -92,14 +93,14 @@ const quizSections = [
 	{
 		title: "問題４．【細胞内の構造】について、「図６」を見ながら、それぞれの空欄([　])に最もよく当てはまる選択肢を一つずつ選びなさい。",
 		images: ["f6.png"],
-		choices: ["リボソーム", "ミトコンドリア", "ゴルジ体", "アミノ酸", "脂肪酸", "(ア)", "(イ)", "(ウ)", "(ア)と(イ)", "(イ)と(ウ)"],
+		choices: ["リボソーム", "ミトコンドリア", "ゴルジ体", "アミノ酸", "脂肪酸", "(ア)", "(イ)", "(ウ)", "(ア)と(イ)", "(イ)と(ウ)", "(ア)と(ウ)"],
 		questions: [
 			{
 				text: "「図６」の(A)の構造の内部は [　] の層である。",
 				answer: 4
 			},
 			{
-				text: "「図６」の(B)に示す細胞小器官(ア)、(イ)、(ウ)のうち、(A)に示されている構造で包まれているのは [　] である。",
+				text: "「図６」の(B)に示す細胞小器官(ア)～(ウ)のうち、(A)に示されている構造で包まれているのは [　] である。",
 				answer: 8
 			},
 			{
@@ -112,19 +113,19 @@ const quizSections = [
 	{
 		title: "問題５．【様々なタンパク質】について、「図７」を見ながら、それぞれの空欄([　])に最もよく当てはまる選択肢を一つずつ選びなさい。",
 		images: ["f7.png"],
-		choices: ["(ア)", "(イ)", "(ウ)", "(イ)と(ウ)", "ダイニン", "キネシン", "ミオシン", "アクチン", "脂質二重層", "細胞骨格", "ゴルジ体", "筋肉"],
+		choices: ["(ア)", "(イ)", "(ウ)", "(ア)と(イ)", "(イ)と(ウ)", "(ア)と(ウ)", "ダイニン", "キネシン", "ミオシン", "アクチン", "脂質二重層", "細胞骨格", "ゴルジ体", "筋肉"],
 		questions: [
 			{
 				text: "「図７」の(ア)〜(ウ)の繊維状構造は [　] とよばれる。",
-				answer: 9
+				answer: 11
 			},
 			{
-				text: "「図７」の(ア)〜(ウ)の中で、脱重合頻度が低く恒常的な構造体を作るものは [　] である。",
+				text: "「図７」の(ア)〜(ウ)のうち、脱重合頻度が低く恒常的な構造体を作るものは [　] である。",
 				answer: 0
 			},
 			{
 				text: "「図７」の(ウ)を足場として移動するモータータンパク質は［　］である。",
-				answer: 6
+				answer: 8
 			}
 		]
 	},
