@@ -98,7 +98,7 @@ function checkAnswers() {
 // 画像クリックで拡大表示（上半分）
 // ================================
 
-// 全画面クリック用の透明のモーダル（閉じるための領域）
+// 画面上半分のモーダル（半透明）
 const modal = document.createElement("div");
 modal.id = "image-modal";
 modal.title = "クリックして閉じる"
