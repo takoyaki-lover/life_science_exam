@@ -11,4 +11,5 @@ document.getElementById("exam-num").addEventListener("change", function() {
 	else {
 		location.href = "./home.html"
 	}
+
 })
