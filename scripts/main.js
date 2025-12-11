@@ -14,7 +14,7 @@ function loadQuiz() {
 		// 大問画像
 		if (section.images && section.images.length > 0) {
 			html += `<div class="section-images">`;
-			section.images.forEach(img => html += `<img src="./exam_${num}/${img}" alt="大問画像">`);
+			section.images.forEach(img => html += `<img src="./exam_${num}/${img}" alt="大問画像" title="クリックして拡大表示する">`);
 			html += `</div>`;
 		}
 
@@ -44,7 +44,7 @@ function renderQuestion(q, sIndex, qIndex, parentChoices, noText=false) {
 		html += `<p><strong>Q${sIndex + 1}-${qIndex + 1}. ${q.text}</strong></p>`;
 	}
 
-	if (q.img) html += `<img src="${q.img}" alt="問題画像">`;
+	if (q.img) html += `<img src="${q.img}" alt="問題画像" title="クリックして拡大表示する">`;
 
 	choices.forEach((choice, cIndex) => {
 		html += `
@@ -101,34 +101,27 @@ function checkAnswers() {
 // 全画面クリック用の透明のモーダル（閉じるための領域）
 const modal = document.createElement("div");
 modal.id = "image-modal";
+modal.title = "クリックして閉じる"
 modal.style.position = "fixed";
 modal.style.top = "0";
 modal.style.left = "0";
 modal.style.width = "100%";
-modal.style.height = "100%";  // クリック領域だけ全画面
-modal.style.background = "rgba(0,0,0,0)"; // ← 背景は透明
+modal.style.height = "45%";
+modal.style.background = "rgba(0,0,0,0.5)";
 modal.style.display = "none";
 modal.style.zIndex = "9999";
 modal.style.cursor = "pointer";
+modal.style.justifyContent = "center";
+modal.style.alignItems = "center";
 document.body.appendChild(modal);
-
-// 上半分だけ黒背景 & 画像表示
-const imgContainer = document.createElement("div");
-imgContainer.style.width = "100%";
-imgContainer.style.height = "45%";      // ← 上半分だけ黒背景
-imgContainer.style.background = "rgba(0,0,0,0.6)";
-imgContainer.style.display = "flex";
-imgContainer.style.justifyContent = "center";
-imgContainer.style.alignItems = "center";
-modal.appendChild(imgContainer);
 
 // 画像本体
 const modalImg = document.createElement("img");
-modalImg.style.maxWidth = "100%";
-modalImg.style.maxHeight = "100%";
+modalImg.style.maxWidth = "100%"
+modalImg.style.height = "100%"
 modalImg.style.objectFit = "contain";
 modalImg.style.pointerEvents = "none";
-imgContainer.appendChild(modalImg);
+modal.appendChild(modalImg);
 
 // クリックで閉じる
 modal.addEventListener("click", () => {
@@ -141,7 +134,7 @@ function enableImageZoom() {
         img.style.cursor = "pointer";
         img.addEventListener("click", (event) => {
             modalImg.src = img.src;
-            modal.style.display = "block"; // 表示ON
+            modal.style.display = "flex"; // 表示ON
             event.stopPropagation();
         });
     });
