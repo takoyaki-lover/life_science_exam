@@ -11,17 +11,18 @@
 
 <h1>生命科学 小テスト 第2回</h1>
 <p class="select-p">小テスト選択：
-<select id="exam-num">
-	<option value="0">ホーム</option>
-	<option value="1">第1回</option>
-	<option value="2" selected>第2回</option>
-	<option value="3">第3回</option>
-</select>
+	<select id="exam-num">
+		<option value="0">ホーム</option>
+		<option value="1">第1回</option>
+		<option value="2" selected>第2回</option>
+		<option value="3">第3回</option>
+	</select>
 </p>
+
 <div id="quiz-container"></div>
 
-<button class="check" onclick="checkAnswers()">採点</button>
-<h2 class="score">点数：<span id="score">まだ採点していません</span></h2>
+<button class="check" onclick="checkAnswers()">採点する</button>
+<h2 class="score">点数：<span id="score">まだ採点されていません</span></h2>
 
 <script>
 
