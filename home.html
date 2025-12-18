@@ -5,18 +5,22 @@
 	<title>生命科学 小テスト</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=0.5">
 	<link rel="stylesheet" href="./styles.css">
+	<script>
+		let num = 0; // 第何回目であるか
+	</script>
 </head>
 
 <body>
 
 <h1>生命科学 小テスト</h1>
+
 <p class="select-p">小テスト選択：
-<select id="exam-num">
-	<option value="0" selected>ホーム</option>
-	<option value="1">第1回</option>
-	<option value="2">第2回</option>
-	<option value="3">第3回</option>
-</select>
+	<select class="exam-num">
+		<option value="0">ホーム</option>
+		<option value="1">第1回</option>
+		<option value="2">第2回</option>
+		<option value="3">第3回</option>
+	</select>
 </p>
 
 <script src="./scripts/transfer.js"></script>

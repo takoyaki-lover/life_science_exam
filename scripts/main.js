@@ -1,3 +1,8 @@
+// 第何回目表示
+document.getElementById("title").textContent += ` 第${num}回`
+document.getElementById("header-title").textContent += ` 第${num}回`
+
+
 // ================================
 // 描画関数
 // ================================
@@ -9,7 +14,7 @@ function loadQuiz() {
 		const secDiv = document.createElement("div");
 		secDiv.className = "section";
 
-		let html = `<h2>${section.title}</h2>`;
+		let html = `<h2 class="level-3">${section.title}</h2>`;
 
 		// 大問画像
 		if (section.images && section.images.length > 0) {
@@ -41,14 +46,14 @@ function renderQuestion(q, sIndex, qIndex, parentChoices, noText=false) {
 
 	// textがある場合のみ問題文を表示
 	if (!noText && q.text) {
-		html += `<p><strong>Q${sIndex + 1}-${qIndex + 1}. ${q.text}</strong></p>`;
+		html += `<p class="q-title level-4"><strong>Q${sIndex + 1}-${qIndex + 1}. ${q.text}</strong></p>`;
 	}
 
-	if (q.img) html += `<img src="${q.img}" alt="問題画像" title="クリックして拡大表示する">`;
+	if (q.img) html += `<img src="./exam_${q.img}" alt="問題画像" title="クリックして拡大表示する">`;
 
 	choices.forEach((choice, cIndex) => {
 		html += `
-		<label>
+		<label class="level-4">
 			<input type="radio" name="s${sIndex}-q${qIndex}" value="${cIndex}">
 			${choice}
 		</label><br>`;
@@ -77,20 +82,46 @@ function checkAnswers() {
 			const choices = q.choices || section.choices;
 
 			if (!selected) {
-				resultDiv.innerHTML = `<span class="wrong">未回答</span>（正解：${choices[q.answer]}）`;
+				resultDiv.innerHTML = `<p class="no-magin level-4"><span class="wrong">未回答</span>（正解：${choices[q.answer]}）</p>`;
 				return;
 			}
 
 			if (Number(selected.value) === q.answer) {
 				score++;
-				resultDiv.innerHTML = `<span class="correct">正解！</span>`;
+				resultDiv.innerHTML = `<p class="no-magin level-4"><span class="correct">正解！</span></p>`;
 			} else {
-				resultDiv.innerHTML = `<span class="wrong">不正解</span>（正解：${choices[q.answer]}）`;
+				resultDiv.innerHTML = `<p class="no-magin level-4"><span class="wrong">不正解</span>（正解：${choices[q.answer]}）</p>`;
 			}
 		});
 	});
-
 	document.getElementById("score").textContent = `${score} / ${total}`;
+}
+
+// 採点結果を閉じる
+function uncheck() {
+	quizSections.forEach((section, sIndex) => {
+		// 小問がある場合とない場合で配列化
+		const questionList = section.questions && section.questions.length > 0 ? section.questions : [section];
+
+		questionList.forEach((q, qIndex) => {
+			const selected = document.querySelector(`input[name="s${sIndex}-q${qIndex}"]:checked`);
+			const resultDiv = document.getElementById(`result-s${sIndex}-q${qIndex}`);
+			const choices = q.choices || section.choices;
+
+			if (!selected) {
+				resultDiv.innerHTML = "";
+				return;
+			}
+
+			if (Number(selected.value) === q.answer) {
+				resultDiv.innerHTML = "";
+			} else {
+				resultDiv.innerHTML = "";
+			}
+		});
+	});
+	document.getElementById("score").textContent = "まだ採点されていません";
+
 }
 
 

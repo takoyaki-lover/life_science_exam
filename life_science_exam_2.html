@@ -2,33 +2,40 @@
 <html lang="ja">
 <head>
 	<meta charset="UTF-8">
-	<title>生命科学 小テスト 第2回</title>
+	<title id="title">生命科学 小テスト</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=0.5">
 	<link rel="stylesheet" href="./styles.css">
+	<script>
+		let num = 2; // 第何回目であるか
+	</script>
 </head>
 
 <body>
 
-<h1>生命科学 小テスト 第2回</h1>
-<p class="select-p">小テスト選択：
-	<select id="exam-num">
+<h1 id="header-title" class="level-1">生命科学 小テスト</h1>
+
+<p class="select-p level-4">小テスト選択：
+	<select class="exam-num level-4">
 		<option value="0">ホーム</option>
 		<option value="1">第1回</option>
-		<option value="2" selected>第2回</option>
+		<option value="2">第2回</option>
 		<option value="3">第3回</option>
 	</select>
 </p>
 
 <div id="quiz-container"></div>
 
-<button class="check" onclick="checkAnswers()">採点する</button>
-<h2 class="score">点数：<span id="score">まだ採点されていません</span></h2>
+<div class="btn-area">
+	<button class="level-4" onclick="checkAnswers()">採点する</button>
+	<button class="level-4" onclick="uncheck()">採点結果を閉じる</button>
+</div>
+<h2 class="level-2">点数：<span id="score">まだ採点されていません</span></h2>
 
-<p class="select-p">小テスト選択：
-	<select id="exam-num1">
+<p class="select-p level-4">小テスト選択：
+	<select class="exam-num level-4">
 		<option value="0">ホーム</option>
 		<option value="1">第1回</option>
-		<option value="2" selected>第2回</option>
+		<option value="2">第2回</option>
 		<option value="3">第3回</option>
 	</select>
 </p>

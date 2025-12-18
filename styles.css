@@ -1,57 +1,68 @@
-@media screen and (min-width: 701px) { /*for PC*/
-    body {font-family: Arial, sans-serif; margin: 8px 30px 40px 30px}
-    h1 {font-size: 32px; margin: 0 0 5px;}
-    h2 {font-size: 20px; margin: 0 0 15px;}
-    p {margin: 15px 0 5px 0;}
-    select {font-size: 16px; margin: 0 0 3px; width: auto; height: 25px;}
-    .check {font-size: 16px; margin: 0 0 10px;}
-    .score {margin: 0 0 15px;}
+body {font-family: Arial, sans-serif;}
+
+@media screen and (min-width: 900px) { /*for PC*/
+    body {margin: 8px 30px 40px;}
+    .level-1 {font-size: 32px;}
+    .level-2 {font-size: 24px;}
+    .level-3 {font-size: 20px;}
+    .level-4 {font-size: 16px;}
+    h1 {margin: 0 0 5px;}
+    h2 {margin: 0 0 15px;}
+    select {margin: 0 0 3px; width: auto; height: 25px;}
     .select-p {margin: 0 0 6px;}
-    .section {border: 2px solid #333; padding: 15px 15px 0; margin-bottom: 25px; border-radius: 8px;}
+    .section {margin: 0 0 25px; padding: 15px; border: 2px solid #333; border-radius: 8px;}
     .section-images {display: flex; flex-wrap: wrap; gap: 10px; align-items: flex-start;}
     .section-images img {width: auto; height: 250px; max-width: none; max-height: none; display: block;}
-    .question {margin: 10px 0 20px; padding-bottom: 3px; border-bottom: 1px solid #ccc;}
-    .question img {width: auto; height: auto; max-width: none; max-height: none; display: block; margin-bottom: 10px;}
-    .result {margin-top: 10px; font-weight: bold;}
-    .correct {color: green;}
-    .wrong {color: red;}
+    .question {margin: 15px 0 0; padding: 0 0 3px; border-bottom: 1px solid #ccc;}
+    .question img {width: auto; height: auto; max-width: none; max-height: none; display: block;}
+    .q-title {margin: 0 0 5px;}
+    .result {margin: 10px 0 0; font-weight: bold;}
+    .btn-area {margin: 0 0 15px; display: flex; gap: 20px; width: max-content;}
+    .score {margin: 0 0 15px;}
 }
 
-@media screen and (min-width: 551px) and (max-width: 700px) { /*for Tablet*/
-    body {font-family: Arial, sans-serif; margin: 8px 20px 40px 20px;}
-    h1 {font-size: 28px; margin: 0 0 3px;}
-    h2 {font-size: 16px; margin: 0 0 15px;}
-    p {margin: 15px 0 5px 0;}
-    select {font-size: 16px; margin: 0 0 3px; width: auto; height: 25px;}
-    .check {font-size: 16px; margin: 0 0 10px}
-    .score {margin: 0 0 10px;}
+@media screen and (min-width: 551px) and (max-width: 900px) { /*for Tablet*/
+    body {margin: 8px 20px 40px;}
+    .level-1 {font-size: 28px;}
+    .level-2 {font-size: 24px;}
+    .level-3 {font-size: 20px;}
+    .level-4 {font-size: 16px;}
+    h1 {margin: 0 0 5px;}
+    h2 {margin: 0 0 15px;}
+    select {margin: 0 0 3px; width: auto; height: 25px;}
     .select-p {margin: 0 0 6px;}
-    .section {border: 2px solid #333; padding: 13px 13px 0; margin-bottom: 25px; border-radius: 8px;}
+    .section {margin: 0 0 25px; padding: 15px; border: 2px solid #333; border-radius: 8px;}
     .section-images {display: flex; flex-wrap: wrap; gap: 10px; align-items: flex-start;}
-    .section-images img {width: auto; height: 200px; max-width: none; max-height: none; display: block;}
-    .question {margin: 10px 0 20px; padding-bottom: 3px; border-bottom: 1px solid #ccc;}
-    .question img {width: auto; height: auto; max-width: none; max-height: none; display: block; margin-bottom: 10px;}
-    .result {margin-top: 10px; font-weight: bold;}
-    .correct {color: green;}
-    .wrong {color: red;}
+    .section-images img {width: auto; height: 250px; max-width: none; max-height: none; display: block;}
+    .question {margin: 15px 0 0; padding: 0 0 3px; border-bottom: 1px solid #ccc;}
+    .question img {width: auto; height: auto; max-width: none; max-height: none; display: block;}
+    .q-title {margin: 0 0 5px;}
+    .result {margin: 10px 0 0; font-weight: bold;}
+    .btn-area {margin: 0 0 15px; display: flex; gap: 20px; width: max-content;}
+    .score {margin: 0 0 15px;}
 }
 
 @media screen and (max-width: 550px) { /*for smartphone*/
-    body {font-family: Arial, sans-serif; margin: 5px 10px 40px 10px;}
-    h1 {font-size: 24px; margin: 0 0 3px;}
-    h2 {font-size: 16px; margin: 0 0 15px;}
-    p {font-size: 14px; margin: 15px 0 5px 0;}
-    label {font-size: 14px;}
-    select {font-size: 14px; margin: 0 0 3px; width: auto; height: 25px;}
-    .check {font-size: 14px; margin: 0 0 10px;}
-    .score {margin: 0 0 10px;}
-    .select-p {margin: 0 0 5px;}
-    .section {border: 1px solid #333; padding: 10px 10px 0; margin-bottom: 25px; border-radius: 8px;}
+    body {margin: 5px 10px 40px 10px;}
+    .level-1 {font-size: 24px;}
+    .level-2 {font-size: 20px;}
+    .level-3 {font-size: 16px;}
+    .level-4 {font-size: 14px;}
+    h1 {margin: 0 0 5px;}
+    h2 {margin: 0 0 15px;}
+    select {margin: 0 0 3px; width: auto; height: 25px;}
+    .select-p {margin: 0 0 6px;}
+    .section {margin: 0 0 25px; padding: 10px; border: 1px solid #333; border-radius: 8px;}
     .section-images {display: flex; flex-wrap: wrap; gap: 10px; align-items: flex-start;}
     .section-images img {width: auto; height: 120px; max-width: none; max-height: none; display: block;}
-    .question {margin: 10px 0 20px; padding-bottom: 3px; border-bottom: 1px solid #ccc;}
-    .question img {width: auto; height: auto; max-width: none; max-height: none; display: block; margin-bottom: 10px;}
-    .result {font-size: 14px; margin-top: 10px; font-weight: bold;}
-    .correct {color: green;}
-    .wrong {color: red;}
+    .question {margin: 15px 0 0; padding: 0 0 3px; border-bottom: 1px solid #ccc;}
+    .question img {width: auto; height: auto; max-width: none; max-height: none; display: block;}
+    .q-title {margin: 0 0 5px;}
+    .result {margin: 10px 0 0; font-weight: bold;}
+    .btn-area {margin: 0 0 15px; display: flex; gap: 20px; width: max-content;}
+    .score {margin: 0 0 15px;}
 }
+
+.no-magin {margin: 0;}
+.correct {color: green;}
+.wrong {color: red;}
