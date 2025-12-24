@@ -26,16 +26,27 @@ function loadQuiz() {
 		}
 		// 小問なしの場合は大問単独問題として描画
 		else {
-		html += renderQuestion(section, sIndex, 0, section.choices, true); // trueでtextなし扱い
+			html += renderQuestion(section, sIndex, 0, section.choices, true); // trueでtextなし扱い
 		}
 
 		secDiv.innerHTML = html;
 		container.appendChild(secDiv);
 	});
+
+	container.innerHTML += `
+		<div class="btn-area">
+			<button class="btn-check level-4" onclick="checkAnswers()">採点する</button>
+			<button class="btn-check level-4" onclick="closeAnswers()">採点結果を閉じる</button>
+			<button class="btn-check level-4" onclick="uncheck()">全てのチェックを外す</button>
+		</div>
+		<h2 class="score level-2">点数： <span id="score"></span></h2>`;
+
+	closeAnswers();
 }
 
+
 // 問題描画
-function renderQuestion(q, sIndex, qIndex, parentChoices, noText=false) {
+function renderQuestion(q, sIndex, qIndex, parentChoices, noText = false) {
 	const choices = q.choices || parentChoices;
 	let html = `<div class="question">`;
 
@@ -48,7 +59,7 @@ function renderQuestion(q, sIndex, qIndex, parentChoices, noText=false) {
 
 	choices.forEach((choice, cIndex) => {
 		html += `
-		<label class="choices level-4">
+		<label id="${sIndex}-${qIndex}-${cIndex}" class="choices level-4">
 			<input type="radio" name="s${sIndex}-q${qIndex}" value="${cIndex}">
 			<span class="choice">${choice}</span>
 		</label>`;
@@ -58,6 +69,7 @@ function renderQuestion(q, sIndex, qIndex, parentChoices, noText=false) {
 	html += `</div>`;
 	return html;
 }
+
 
 // ================================
 // 採点
@@ -76,21 +88,25 @@ function checkAnswers() {
 			const resultDiv = document.getElementById(`result-s${sIndex}-q${qIndex}`);
 			const choices = q.choices || section.choices;
 
-			if (!selected) {
-				resultDiv.innerHTML = `<p class="answer-text level-4"><span class="wrong">未回答</span>（正解：${choices[q.answer]}）</p>`;
-				return;
-			}
+			if (selected) {
+				if (Number(selected.value) === q.answer) {
+					score++;
+					document.querySelector(`label[id="${sIndex}-${qIndex}-${q.answer}"]`).classList.remove("correct-answer");
+					resultDiv.innerHTML = `<p class="answer-text level-4"><span class="correct">正解！</span></p>`;
+				} else {
+					document.querySelector(`label[id="${sIndex}-${qIndex}-${q.answer}"]`).classList.add("correct-answer");
+					resultDiv.innerHTML = `<p class="answer-text level-4"><span class="wrong">不正解</span>　(正解： "${choices[q.answer]}")</p>`;
 
-			if (Number(selected.value) === q.answer) {
-				score++;
-				resultDiv.innerHTML = `<p class="answer-text level-4"><span class="correct">正解！</span></p>`;
+				}
 			} else {
-				resultDiv.innerHTML = `<p class="answer-text level-4"><span class="wrong">不正解</span>（正解：${choices[q.answer]}）</p>`;
+				document.querySelector(`label[id="${sIndex}-${qIndex}-${q.answer}"]`).classList.add("correct-answer");
+				resultDiv.innerHTML = `<p class="answer-text level-4"><span class="wrong">未回答</span>　(正解： "${choices[q.answer]}")</p>`;
 			}
 		});
 	});
 	document.getElementById("score").textContent = `${score} / ${total}`;
 }
+
 
 // 採点結果を閉じる
 function closeAnswers() {
@@ -99,24 +115,29 @@ function closeAnswers() {
 		const questionList = section.questions && section.questions.length > 0 ? section.questions : [section];
 
 		questionList.forEach((q, qIndex) => {
-			const selected = document.querySelector(`input[name="s${sIndex}-q${qIndex}"]:checked`);
 			const resultDiv = document.getElementById(`result-s${sIndex}-q${qIndex}`);
-			const choices = q.choices || section.choices;
+			document.querySelector(`label[id="${sIndex}-${qIndex}-${q.answer}"]`).classList.remove("correct-answer");
 
-			if (!selected) {
-				resultDiv.innerHTML = "";
-				return;
-			}
-
-			if (Number(selected.value) === q.answer) {
-				resultDiv.innerHTML = "";
-			} else {
-				resultDiv.innerHTML = "";
-			}
+			resultDiv.innerHTML = `<p class="answer-text level-4">回答中</p>`;
 		});
 	});
 	document.getElementById("score").textContent = "採点されていません";
+}
 
+
+// 全てのチェックを外す
+function uncheck() {
+	quizSections.forEach((section, sIndex) => {
+		const questionList = section.questions && section.questions.length > 0 ? section.questions : [section];
+		questionList.forEach((q, qIndex) => {
+			const choices = q.choices || section.choices;
+			choices.forEach((choice, cIndex) => {
+				document.querySelector(`input[name="s${sIndex}-q${qIndex}"][value="${cIndex}"]`).checked = false;
+			})
+		})
+	})
+
+	closeAnswers();
 }
 
 
@@ -151,20 +172,21 @@ modal.appendChild(modalImg);
 
 // クリックで閉じる
 modal.addEventListener("click", () => {
-    modal.style.display = "none";
+	modal.style.display = "none";
 });
 
 // サムネイルクリックで表示
 function enableImageZoom() {
-    document.querySelectorAll("img").forEach(img => {
-        img.style.cursor = "pointer";
-        img.addEventListener("click", (event) => {
-            modalImg.src = img.src;
-            modal.style.display = "flex"; // 表示ON
-            event.stopPropagation();
-        });
-    });
+	document.querySelectorAll("img").forEach(img => {
+		img.style.cursor = "pointer";
+		img.addEventListener("click", (event) => {
+			modalImg.src = img.src;
+			modal.style.display = "flex"; // 表示ON
+			event.stopPropagation();
+		});
+	});
 }
+
 
 // 初期表示
 loadQuiz();
