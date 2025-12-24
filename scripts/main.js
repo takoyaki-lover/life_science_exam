@@ -1,8 +1,3 @@
-// 第何回目表示
-document.getElementById("title").textContent += ` 第${num}回`
-document.getElementById("header-title").textContent += ` 第${num}回`
-
-
 // ================================
 // 描画関数
 // ================================
@@ -14,7 +9,7 @@ function loadQuiz() {
 		const secDiv = document.createElement("div");
 		secDiv.className = "section";
 
-		let html = `<h2 class="level-3">${section.title}</h2>`;
+		let html = `<h2 class="section-title level-3">${section.title}</h2>`;
 
 		// 大問画像
 		if (section.images && section.images.length > 0) {
@@ -53,10 +48,10 @@ function renderQuestion(q, sIndex, qIndex, parentChoices, noText=false) {
 
 	choices.forEach((choice, cIndex) => {
 		html += `
-		<label class="level-4">
+		<label class="choices level-4">
 			<input type="radio" name="s${sIndex}-q${qIndex}" value="${cIndex}">
-			${choice}
-		</label><br>`;
+			<span class="choice">${choice}</span>
+		</label>`;
 	});
 
 	html += `<div id="result-s${sIndex}-q${qIndex}" class="result"></div>`;
@@ -82,15 +77,15 @@ function checkAnswers() {
 			const choices = q.choices || section.choices;
 
 			if (!selected) {
-				resultDiv.innerHTML = `<p class="no-magin level-4"><span class="wrong">未回答</span>（正解：${choices[q.answer]}）</p>`;
+				resultDiv.innerHTML = `<p class="answer-text level-4"><span class="wrong">未回答</span>（正解：${choices[q.answer]}）</p>`;
 				return;
 			}
 
 			if (Number(selected.value) === q.answer) {
 				score++;
-				resultDiv.innerHTML = `<p class="no-magin level-4"><span class="correct">正解！</span></p>`;
+				resultDiv.innerHTML = `<p class="answer-text level-4"><span class="correct">正解！</span></p>`;
 			} else {
-				resultDiv.innerHTML = `<p class="no-magin level-4"><span class="wrong">不正解</span>（正解：${choices[q.answer]}）</p>`;
+				resultDiv.innerHTML = `<p class="answer-text level-4"><span class="wrong">不正解</span>（正解：${choices[q.answer]}）</p>`;
 			}
 		});
 	});
@@ -98,7 +93,7 @@ function checkAnswers() {
 }
 
 // 採点結果を閉じる
-function uncheck() {
+function closeAnswers() {
 	quizSections.forEach((section, sIndex) => {
 		// 小問がある場合とない場合で配列化
 		const questionList = section.questions && section.questions.length > 0 ? section.questions : [section];
@@ -120,7 +115,7 @@ function uncheck() {
 			}
 		});
 	});
-	document.getElementById("score").textContent = "まだ採点されていません";
+	document.getElementById("score").textContent = "採点されていません";
 
 }
 

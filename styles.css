@@ -1,4 +1,4 @@
-body {font-family: Arial, sans-serif;}
+body {font-family: Arial, sans-serif; background-color: #f4f7f6;}
 
 @media screen and (min-width: 900px) { /*for PC*/
     body {margin: 8px 30px 40px;}
@@ -6,63 +6,79 @@ body {font-family: Arial, sans-serif;}
     .level-2 {font-size: 24px;}
     .level-3 {font-size: 20px;}
     .level-4 {font-size: 16px;}
-    h1 {margin: 0 0 5px;}
-    h2 {margin: 0 0 15px;}
-    select {margin: 0 0 3px; width: auto; height: 25px;}
-    .select-p {margin: 0 0 6px;}
-    .section {margin: 0 0 25px; padding: 15px; border: 2px solid #333; border-radius: 8px;}
+    h1 {margin: 0 0 7px;}
+    .section-title {margin: 0 0 15px;}
+    .select-p {margin: 0 0 15px;}
+    .exam-num {width: auto; height: 25px;}
+    .section {margin: 0 0 25px; padding: 15px; border: 1px solid #aaa; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);}
     .section-images {display: flex; flex-wrap: wrap; gap: 10px; align-items: flex-start;}
     .section-images img {width: auto; height: 250px; max-width: none; max-height: none; display: block;}
     .question {margin: 15px 0 0; padding: 0 0 3px; border-bottom: 1px solid #ccc;}
     .question img {width: auto; height: auto; max-width: none; max-height: none; display: block;}
     .q-title {margin: 0 0 5px;}
+    input {margin: 0 3px 0 5px; position: relative; top: 2px;}
+    .choices {display: inline-block; width: 100%; height: 24px;}
+    .btn-check {padding: 7px 20px; border-radius: 6px;}
     .result {margin: 10px 0 0; font-weight: bold;}
     .btn-area {margin: 0 0 15px; display: flex; gap: 20px; width: max-content;}
-    .score {margin: 0 0 15px;}
+    .score {margin: 0 0 25px; padding: 0 0 2px; border-bottom: 3px solid #ccc;}
 }
 
-@media screen and (min-width: 551px) and (max-width: 900px) { /*for Tablet*/
+@media screen and (min-width: 550px) and (max-width: 900px) { /*for Tablet*/
     body {margin: 8px 20px 40px;}
     .level-1 {font-size: 28px;}
     .level-2 {font-size: 24px;}
     .level-3 {font-size: 20px;}
     .level-4 {font-size: 16px;}
-    h1 {margin: 0 0 5px;}
-    h2 {margin: 0 0 15px;}
-    select {margin: 0 0 3px; width: auto; height: 25px;}
-    .select-p {margin: 0 0 6px;}
-    .section {margin: 0 0 25px; padding: 15px; border: 2px solid #333; border-radius: 8px;}
+    h1 {margin: 0 0 7px;}
+    .section-title {margin: 0 0 15px;}
+    .select-p {margin: 0 0 15px;}
+    .exam-num {width: auto; height: 25px;}
+    .section {margin: 0 0 25px; padding: 15px; border: 1px solid #aaa; border-radius: 8px;}
     .section-images {display: flex; flex-wrap: wrap; gap: 10px; align-items: flex-start;}
-    .section-images img {width: auto; height: 250px; max-width: none; max-height: none; display: block;}
+    .section-images img {width: auto; height: 250px; max-width: 500px; max-height: none; display: block;}
     .question {margin: 15px 0 0; padding: 0 0 3px; border-bottom: 1px solid #ccc;}
     .question img {width: auto; height: auto; max-width: none; max-height: none; display: block;}
     .q-title {margin: 0 0 5px;}
+    input {margin: 0 3px 0 5px; position: relative; top: 2.2px;}
+    .choices {display: inline-block; width: 100%; height: 24px;}
+    .btn-check {padding: 7px 20px; border-radius: 6px;}
     .result {margin: 10px 0 0; font-weight: bold;}
     .btn-area {margin: 0 0 15px; display: flex; gap: 20px; width: max-content;}
-    .score {margin: 0 0 15px;}
+    .score {margin: 0 0 20px; padding: 0 0 2px; border-bottom: 3px solid #ccc;}
 }
 
 @media screen and (max-width: 550px) { /*for smartphone*/
-    body {margin: 5px 10px 40px 10px;}
+    body {margin: 8px 10px 40px;}
     .level-1 {font-size: 24px;}
     .level-2 {font-size: 20px;}
     .level-3 {font-size: 16px;}
     .level-4 {font-size: 14px;}
-    h1 {margin: 0 0 5px;}
-    h2 {margin: 0 0 15px;}
-    select {margin: 0 0 3px; width: auto; height: 25px;}
-    .select-p {margin: 0 0 6px;}
-    .section {margin: 0 0 25px; padding: 10px; border: 1px solid #333; border-radius: 8px;}
+    h1 {margin: 0 0 7px;}
+    .section-title {margin: 0 0 15px;}
+    .select-p {margin: 0 0 15px;}
+    .exam-num {width: auto; height: 25px;}
+    .section {margin: 0 0 25px; padding: 10px; border: 1px solid #aaa; border-radius: 8px;}
     .section-images {display: flex; flex-wrap: wrap; gap: 10px; align-items: flex-start;}
     .section-images img {width: auto; height: 120px; max-width: none; max-height: none; display: block;}
     .question {margin: 15px 0 0; padding: 0 0 3px; border-bottom: 1px solid #ccc;}
     .question img {width: auto; height: auto; max-width: none; max-height: none; display: block;}
     .q-title {margin: 0 0 5px;}
+    input {margin: 0 2px 0 3px; position: relative; top: 3.1px;}
+    .choices {display: inline-block; width: 100%; height: 24px;}
+    .btn-check {padding: 6px 16px; border-radius: 6px;}
     .result {margin: 10px 0 0; font-weight: bold;}
     .btn-area {margin: 0 0 15px; display: flex; gap: 20px; width: max-content;}
-    .score {margin: 0 0 15px;}
+    .score {margin: 0 0 20px; padding: 0 0 2px; border-bottom: 2px solid #ccc;}
 }
 
-.no-magin {margin: 0;}
+.section {background-color: white;}
+.choices, input {cursor: pointer;}
+.choices:hover {background: #d8d8d8}
+.choice {vertical-align: middle;}
+.answer-text {margin: 0;}
 .correct {color: green;}
 .wrong {color: red;}
+.btn-check {background: #27ae60; color: white; border: none; cursor: pointer; font-weight: bold;}
+.btn-check:hover {background: #23a057;}
+.btn-check:active {background: #219150;}
