@@ -75,7 +75,7 @@ body {font-family: Arial, sans-serif; background-color: #f4f7f6;}
 .section {background-color: white;}
 .choices, input {cursor: pointer;}
 .choices:hover, .choices:hover > * {background: #d8d8d8}
-.selected {background: #e4e4e4;}
+.selected, .selected > * {background: #e4e4e4;}
 .choices.selected:hover, .choices.selected:hover > * {background: #cacaca}
 .correct-answer, .correct-answer > * {background: #ffcaca;}
 .choices.correct-answer:hover, .choices.correct-answer:hover > * {background: #d8afaf;}
