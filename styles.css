@@ -78,6 +78,7 @@ body {font-family: Arial, sans-serif; background-color: #f4f7f6;}
 .selected, .selected > * {background: #e4e4e4;}
 .choices.selected:hover, .choices.selected:hover > * {background: #cacaca}
 .correct-answer, .correct-answer > * {background: #ffcaca;}
+.correct-answer.selected, .correct-answer.selected > * {background: #ecbbbb}
 .choices.correct-answer:hover, .choices.correct-answer:hover > * {background: #d8afaf;}
 .iscorrect, .iscorrect > * {background: #c0f5c0;}
 .choices.iscorrect:hover, .choices.iscorrect:hover > * {background: #a9d7a9}
