@@ -19,6 +19,6 @@ exam_num.forEach(function (exam_num) {
 
 // 第何回目表示
 if (num != 0) {
-document.getElementById("title").textContent += ` 第${num}回`;
-document.getElementById("header-title").textContent += ` 第${num}回`;
+document.getElementById("page-title").textContent += ` 第${num}回`;
+document.getElementById("top").textContent += ` 第${num}回`;
 }
