@@ -5,7 +5,7 @@ body {
 }
 
 :root {
-    --header-height: 0px;
+    --header-height: 50px;
     --input-radio-width: 14px;
     --input-radio-right-left-margin: 5px;
 }
@@ -24,11 +24,13 @@ body {
     .level-2 {font-size: 24px;}
     .level-3 {font-size: 20px;}
     .level-4 {font-size: 16px;}
+    .level-5 {font-size: 15px;}
     :root {
         --section-padding: 15px;
         --image-wrap-img-height: 250px;
-        --btn-area-gap: 15px 20px;
-        --btn-padding: 7px 18px;
+        --total-result-area-gap: 25px;
+        --btn-area-gap: 25px;
+        --btn-padding: 6px 14px;
         --score-width: 400px;
     }
 }
@@ -41,11 +43,13 @@ body {
     .level-2 {font-size: 24px;}
     .level-3 {font-size: 20px;}
     .level-4 {font-size: 16px;}
+    .level-5 {font-size: 15px;}
     :root {
         --section-padding: 15px;
         --image-wrap-img-height: 250px;
-        --btn-area-gap: 15px 20px;
-        --btn-padding: 7px 18px;
+        --total-result-area-gap: 20px;
+        --btn-area-gap: 25px;
+        --btn-padding: 6px 14px;
         --score-width: 300px;
     }
 }
@@ -58,11 +62,13 @@ body {
     .level-2 {font-size: 20px;}
     .level-3 {font-size: 16px;}
     .level-4 {font-size: 14px;}
+    .level-5 {font-size: 13px;}
     :root {
         --section-padding: 10px;
         --image-wrap-img-height: 150px;
-        --btn-area-gap: 20px 25px;
-        --btn-padding: 6px 14px;
+        --total-result-area-gap: 10px;
+        --btn-area-gap: 20px;
+        --btn-padding: 6px 12px;
         --score-width: 200px;
     }
 }
@@ -145,7 +151,7 @@ img:hover {
     width: auto;
     margin: 0;
     display: flex;
-    gap: 2px;
+    gap: 4px;
     flex-direction: column;
 }
 
@@ -165,7 +171,7 @@ input[type="radio"] {
     display: flex;
     align-items: center;
     width: 100%;
-    min-height: 24px;
+    line-height: 1.5;
     position: relative;
     box-sizing: border-box;
     user-select: none;
@@ -240,7 +246,7 @@ input[type="radio"]:hover+ .iscorrect, input[type="radio"]:hover+ .iscorrect::be
 .total-result-area {
     margin: 0 auto 25px;
     display: flex;
-    gap: 10px;
+    gap: 10px var(--total-result-area-gap);
     flex-wrap: wrap;
     align-content: flex-start;
 }
@@ -248,7 +254,7 @@ input[type="radio"]:hover+ .iscorrect, input[type="radio"]:hover+ .iscorrect::be
 .btn-area {
     margin: 0 auto 25px;
     display: flex;
-    gap: var(--btn-area-gap);
+    gap: 15px var(--btn-area-gap);
     flex-wrap: wrap;
     align-content: flex-start;
 }
@@ -265,6 +271,14 @@ input[type="radio"]:hover+ .iscorrect, input[type="radio"]:hover+ .iscorrect::be
 
 .btn:hover {
     cursor: pointer;
+}
+
+.btn:disabled, .btn:disabled:hover, .btn:disabled:active {
+    background-color: #c8c8c8;
+}
+
+.btn:disabled:hover {
+    cursor: not-allowed;
 }
 
 .btn-check {
@@ -338,11 +352,18 @@ footer {
     text-align: center;
     background-color: green;
     color: #fff;
-    padding: 0;
+    padding: 10px;
     width: auto;
     margin: auto 0 0;
     display: flex;
     flex-direction: column;
+}
+
+footer .footer-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin: auto;
 }
 
 * {
