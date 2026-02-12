@@ -34,12 +34,12 @@ function loadQuiz() {
 
 	container.insertAdjacentHTML("beforeend", `
 		<div class="total-result-area">
-			<button class="btn btn-check level-4" onclick="checkAnswers()">採点する</button>
+			<button class="btn btn-check level-5" onclick="checkAnswers()">採点する</button>
 			<h2 class="score level-2">点数: <span id="score"></span></h2>
 		</div>
 		<div class="btn-area">
-			<button class="btn btn-close level-4" onclick="closeAnswers()">結果を閉じる</button>
-			<button class="btn btn-uncheck level-4" onclick="uncheck()">チェックを全て外す</button>
+			<button class="btn btn-close level-5" id="close" onclick="closeAnswers()">結果を閉じる</button>
+			<button class="btn btn-uncheck level-5" id="uncheck" onclick="uncheck()">チェックを全て外す</button>
 		</div>
 
 	`);
@@ -82,6 +82,8 @@ function renderQuestion(q, sIndex, qIndex, parentChoices, noText = false) {
 	return html;
 }
 
+let uncheckBtn;
+let closeBtn;
 
 // チェックを押したとき
 function check() {
@@ -100,6 +102,8 @@ function check() {
 			}
 		})
 	})
+
+	uncheckBtn.disabled = false;
 }
 
 
@@ -151,6 +155,8 @@ function checkAnswers() {
 		});
 	});
 	document.getElementById("score").textContent = `${score} / ${total}`;
+
+	closeBtn.disabled = false;
 }
 
 
@@ -178,6 +184,8 @@ function closeAnswers() {
 		});
 	});
 	document.getElementById("score").textContent = "未採点";
+
+	closeBtn.disabled = true;
 }
 
 
@@ -196,6 +204,7 @@ function uncheck() {
 	})
 
 	check();
+	uncheckBtn.disabled = true;
 }
 
 
@@ -248,5 +257,21 @@ function enableImageZoom() {
 
 // 初期表示
 loadQuiz();
+uncheckBtn = document.getElementById("uncheck");
+closeBtn = document.getElementById("close");
 closeAnswers();
 enableImageZoom();
+let tf = false;
+let sections = document.querySelectorAll(".section");
+sections.forEach((section, sIndex) => {
+	let questions = section.querySelectorAll(".question");
+	questions.forEach((question, qIndex) => {
+		const selected = document.querySelector(`input[name="${sIndex}-${qIndex}"]:checked`);
+		if (selected) {
+			tf = true;
+		}
+	})
+})
+if (!tf) {
+	uncheckBtn.disabled = true;
+}
