@@ -53,7 +53,7 @@ function renderQuestion(q, sIndex, qIndex, parentChoices, noText = false) {
 
 	// textがある場合のみ問題文を表示
 	if (!noText && q.text) {
-		html += `<p class="question-title level-4">Q${sIndex + 1}-${qIndex + 1}. ${q.text}</p>`;
+		html += `<p class="question-title level-4">問${sIndex + 1}-${qIndex + 1}. ${q.text}</p>`;
 	}
 
 	if (!noText && q.images) {
@@ -275,3 +275,4 @@ sections.forEach((section, sIndex) => {
 if (!tf) {
 	uncheckBtn.disabled = true;
 }
+
