@@ -87,23 +87,45 @@ let closeBtn;
 
 // チェックを押したとき
 function check() {
-	quizSections.forEach((section, sIndex) => {
-		const questionList = section.questions && section.questions.length > 0 ? section.questions : [section];
+	let sections = document.querySelectorAll(".section");
+	let tf = false;
 
-		questionList.forEach((q, qIndex) => {
-			const choices = q.choices || section.choices;
-			for (let i = 0; i < choices.length; i++) {
-				document.querySelector(`label[id="${sIndex}-${qIndex}-${i}"]`).classList.remove("selected");
-			}
-
+	sections.forEach((section, sIndex) => {
+		let questions = section.querySelectorAll(".question");
+		questions.forEach((question, qIndex) => {
+			let inputs = question.querySelectorAll("input");
+			inputs.forEach((input, iIndex) => {
+				document.querySelector(`label[for="${sIndex}-${qIndex}-${iIndex}"]`).classList.remove("selected");
+			})
 			const selected = document.querySelector(`input[name="${sIndex}-${qIndex}"]:checked`);
 			if (selected) {
-				document.querySelector(`label[id="${sIndex}-${qIndex}-${selected.value}"]`).classList.add("selected");
+				document.querySelector(`label[for="${sIndex}-${qIndex}-${selected.value}"]`).classList.add("selected");
+				tf = true;
+				console.log(sIndex, qIndex, true)
 			}
 		})
 	})
+	if (!tf) {
+		uncheckBtn.disabled = true;
+	} else {
+		uncheckBtn.disabled = false;
+	}
 
-	uncheckBtn.disabled = false;
+	// quizSections[num - 1].forEach((section, sIndex) => {
+	// 	const questionList = section.questions && section.questions.length > 0 ? section.questions : [section];
+
+	// 	questionList.forEach((q, qIndex) => {
+	// 		const choices = q.choices || section.choices;
+	// 		for (let i = 0; i < choices.length; i++) {
+	// 			document.querySelector(`label[id="${sIndex}-${qIndex}-${i}"]`).classList.remove("selected");
+	// 		}
+
+	// 		const selected = document.querySelector(`input[name="${sIndex}-${qIndex}"]:checked`);
+	// 		if (selected) {
+	// 			document.querySelector(`label[id="${sIndex}-${qIndex}-${selected.value}"]`).classList.add("selected");
+	// 		}
+	// 	})
+	// })
 }
 
 
@@ -162,30 +184,48 @@ function checkAnswers() {
 
 // 採点結果を閉じる
 function closeAnswers() {
-	quizSections.forEach((section, sIndex) => {
-		// 小問がある場合とない場合で配列化
-		const questionList = section.questions && section.questions.length > 0 ? section.questions : [section];
-
-		questionList.forEach((q, qIndex) => {
-			const selected = document.querySelector(`input[name="${sIndex}-${qIndex}"]:checked`);
-			if (selected) {
-				document.querySelector(`label[id="${sIndex}-${qIndex}-${selected.value}"]`).classList.remove("iscorrect");
-			}
-
-			document.querySelector(`label[id="${sIndex}-${qIndex}-${q.answer}"]`).classList.remove("correct-answer");
-
+	let sections = document.querySelectorAll(".section");
+	sections.forEach((section, sIndex) => {
+		let questions = section.querySelectorAll(".question");
+		questions.forEach((question, qIndex) => {
 			const judge = document.getElementById(`${sIndex}-${qIndex}-judge`);
 			const correctAnswerText = document.getElementById(`${sIndex}-${qIndex}-text`);
-			judge.classList.remove("wrong-color");
-			judge.classList.remove("correct-color");
+			judge.classList.remove("correct-color", "wrong-color");
 			judge.textContent = "回答中";
 			correctAnswerText.textContent = "([採点する]を押すと正誤判定されます)";
 
-		});
-	});
+			let inputs = question.querySelectorAll("input");
+			inputs.forEach((input, iIndex) => {
+				document.querySelector(`label[for="${sIndex}-${qIndex}-${iIndex}"]`).classList.remove("iscorrect", "correct-answer");
+			})
+		})
+	})
 	document.getElementById("score").textContent = "未採点";
 
 	closeBtn.disabled = true;
+
+	// quizSections[num - 1].forEach((section, sIndex) => {
+	// 	// 小問がある場合とない場合で配列化
+	// 	const questionList = section.questions && section.questions.length > 0 ? section.questions : [section];
+
+	// 	questionList.forEach((q, qIndex) => {
+	// 		const selected = document.querySelector(`input[name="${sIndex}-${qIndex}"]:checked`);
+	// 		if (selected) {
+	// 			document.querySelector(`label[id="${sIndex}-${qIndex}-${selected.value}"]`).classList.remove("iscorrect");
+	// 		}
+	// 		const choices = q.choices || section.choices;
+	// 		choices.forEach((choice, cIndex) => {
+	// 			document.querySelector(`label[id="${sIndex}-${qIndex}-${cIndex}"]`).classList.remove("correct-answer");
+	// 		})
+	// 		const judge = document.getElementById(`${sIndex}-${qIndex}-judge`);
+	// 		const correctAnswerText = document.getElementById(`${sIndex}-${qIndex}-text`);
+	// 		judge.classList.remove("wrong-color");
+	// 		judge.classList.remove("correct-color");
+	// 		judge.textContent = "回答中";
+	// 		correctAnswerText.textContent = "([採点する]を押すと正誤判定されます)";
+
+	// 	});
+	// });
 }
 
 
@@ -193,18 +233,32 @@ function closeAnswers() {
 function uncheck() {
 	closeAnswers();
 
-	quizSections.forEach((section, sIndex) => {
-		const questionList = section.questions && section.questions.length > 0 ? section.questions : [section];
-		questionList.forEach((q, qIndex) => {
-			const choices = q.choices || section.choices;
-			choices.forEach((choice, cIndex) => {
-				document.querySelector(`input[name="${sIndex}-${qIndex}"][value="${cIndex}"]`).checked = false;
+	let sections = document.querySelectorAll(".section");
+	sections.forEach((section, sIndex) => {
+		let questions = section.querySelectorAll(".question");
+		questions.forEach((question, qIndex) => {
+			let inputs = question.querySelectorAll("input");
+			inputs.forEach((input, iIndex) => {
+				document.querySelector(`input[name="${sIndex}-${qIndex}"][value="${iIndex}"]`).checked = false;
+				document.querySelector(`label[for="${sIndex}-${qIndex}-${iIndex}"]`).classList.remove("selected");
 			})
 		})
 	})
 
-	check();
 	uncheckBtn.disabled = true;
+
+	// quizSections[num - 1].forEach((section, sIndex) => {
+	// 	const questionList = section.questions && section.questions.length > 0 ? section.questions : [section];
+	// 	questionList.forEach((q, qIndex) => {
+	// 		const choices = q.choices || section.choices;
+	// 		choices.forEach((choice, cIndex) => {
+	// 			document.querySelector(`input[name="${sIndex}-${qIndex}"][value="${cIndex}"]`).checked = false;
+	// 		})
+	// 		for (let i = 0; i < choices.length; i++) {
+	// 			document.querySelector(`label[id="${sIndex}-${qIndex}-${i}"]`).classList.remove("selected");
+	// 		}
+	// 	})
+	// })
 }
 
 
@@ -275,4 +329,3 @@ sections.forEach((section, sIndex) => {
 if (!tf) {
 	uncheckBtn.disabled = true;
 }
-
