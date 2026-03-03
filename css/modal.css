@@ -1,0 +1,68 @@
+:root {
+    --drag-bar-height: 20px;
+    --drag-icon-width: 35px;
+}
+
+.modal-wrap {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    flex-direction: column;
+    width: 100vw;
+    height: 45vh;
+    min-height: min-content;
+    max-height: 100vh;
+    z-index: 100;
+}
+
+.modal-image-wrap {
+    width: 100%;
+    height: calc(100% - var(--drag-bar-height));
+    background-color: rgba(49, 33, 33, 0.5);
+    display: flex;
+    z-index: 100;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-image-wrap:hover {
+    cursor: pointer;
+}
+
+.modal-image-wrap img {
+    max-width: 100%;
+    height: 100%;
+    object-fit: contain;
+    pointer-events: none;
+}
+
+.drag-bar {
+    width: 100%;
+    height: var(--drag-bar-height);
+    background-color: #eee;
+    border-bottom: 0.1px solid #999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.drag-icon-wrap {
+    width: var(--drag-icon-width);
+    height: auto;
+    display: flex;
+    gap: 4px;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.drag-icon-stick {
+    width: var(--drag-icon-width);
+    height: 1.6px;
+    background-color: #bbb;
+}
+
+.drag-bar:hover {
+    cursor: row-resize;
+}
