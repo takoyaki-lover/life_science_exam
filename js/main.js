@@ -13,7 +13,7 @@ function loadQuiz() {
 		// 大問画像
 		if (section.images && section.images.length > 0) {
 			html += `<div class="image-wrap">`;
-			section.images.forEach(img => html += `<img src="./exam_${num}/${img}" alt="${img}">`);
+			section.images.forEach(img => html += `<img src="./exam_${num}/${img}" alt="${img}" title="クリックして拡大する">`);
 			html += `</div>`;
 		}
 
@@ -58,7 +58,7 @@ function renderQuestion(q, sIndex, qIndex, parentChoices, noText = false) {
 
 	if (!noText && q.images) {
 		html += `<div class="image-wrap">`;
-		q.images.forEach(img => html += `<img src="./exam_${num}/${img}" alt="${img}">`);
+		q.images.forEach(img => html += `<img src="./exam_${num}/${img}" alt="${img}" title="クリックして拡大する">`);
 		html += `</div>`;
 	}
 
@@ -188,7 +188,7 @@ function closeAnswers() {
 			const judge = document.getElementById(`${sIndex}-${qIndex}-judge`);
 			const correctAnswerText = document.getElementById(`${sIndex}-${qIndex}-text`);
 			judge.classList.remove("correct-color", "wrong-color");
-			judge.textContent = "回答中";
+			judge.textContent = "解答中";
 			correctAnswerText.textContent = "([採点する]を押すと正誤判定されます)";
 
 			let inputs = question.querySelectorAll("input");
@@ -311,7 +311,6 @@ const uncheckBtn = document.getElementById("uncheck");
 const closeBtn = document.getElementById("close");
 closeAnswers();
 // enableImageZoom();
-
 check();
 // let tf = false;
 // const sections = document.querySelectorAll(".section");
@@ -326,5 +325,4 @@ check();
 // })
 // if (!tf) {
 // 	uncheckBtn.disabled = true;
-
 // }

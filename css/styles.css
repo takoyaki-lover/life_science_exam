@@ -151,8 +151,8 @@ img:hover {
 }
 
 .question-title {
-    font-weight: bold;
     margin: 0 0 7px;
+    font-weight: bold;
     line-height: 1.4;
 }
 
@@ -377,6 +377,27 @@ footer .footer-inner {
     flex-direction: column;
     gap: 5px;
     margin: auto;
+}
+
+.information-wrap {
+    margin: 60px auto 0;
+    padding: 10px;
+    border: 2px solid #aa5050;
+    border-radius: 4px;
+    background-color: #dd8282;
+    max-width: 700px;
+}
+
+.information-title {
+    text-align: center;
+    margin: 0;
+    line-height: 1.5;
+}
+
+.information-text {
+    margin: 8px 0 0;
+    line-height: 1.5;
+    word-break: break-all;
 }
 
 * {
